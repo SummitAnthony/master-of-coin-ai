@@ -1,0 +1,33 @@
+==========================================================
+  MASTER OF COIN AI — HOW TO RUN
+==========================================================
+
+You do NOT need Python, VS Code, or any install.
+
+----------------------------------------------------------
+TO OPEN THE APP
+----------------------------------------------------------
+  Double-click:   Master of Coin AI.exe
+
+A desktop window opens with the full dashboard. Click around,
+upload an income statement, run scenarios, and explore.
+
+First launch may take 10-20 seconds while it unpacks. If
+Windows SmartScreen shows a warning (because the file is not
+code-signed), click "More info" -> "Run anyway".
+
+----------------------------------------------------------
+WANT TO SEE THE CODE?
+----------------------------------------------------------
+Everything is in this folder:
+  - src/        the Python application + math engine
+  - web/        the dashboard UI (HTML / CSS / JS)
+  - config/     the financial thresholds
+  - tests/      the full test suite
+
+----------------------------------------------------------
+HOW THE NUMBERS ARE TRUSTED
+----------------------------------------------------------
+The math engine computes every figure (reproducible, auditable).
+The AI only writes ABOUT those numbers - it never invents figures.
+==========================================================

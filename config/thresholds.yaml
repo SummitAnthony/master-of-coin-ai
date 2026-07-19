@@ -1,0 +1,38 @@
+# Financial thresholds — USER-EDITABLE DATA (never baked into code).
+#
+# Each metric defines green/yellow cut-offs and a direction:
+#   direction: higher_is_better  -> green if value >= green; yellow if value >= yellow; else red
+#   direction: lower_is_better   -> green if value <= green; yellow if value <= yellow; else red
+# Margin/ratio values are percentages.
+
+margins:
+  gross_margin_pct:
+    green: 18.0
+    yellow: 12.0
+    direction: higher_is_better
+  operating_margin_pct:
+    green: 10.0
+    yellow: 5.0
+    direction: higher_is_better
+  net_margin_pct:
+    green: 6.0
+    yellow: 2.0
+    direction: higher_is_better
+
+ratios:
+  finance_cost_to_sales_pct:
+    green: 3.0
+    yellow: 6.0
+    direction: lower_is_better
+  opex_to_sales_pct:
+    green: 8.0
+    yellow: 12.0
+    direction: lower_is_better
+
+anomalies:
+  # Flag if a margin falls more than this many basis points vs the prior period.
+  margin_drop_bps: 200
+  # Flag if COGS growth exceeds sales growth by more than this many percentage points.
+  cogs_vs_sales_growth_gap_pct: 3.0
+  # Flag if any cost line grows more than this percent vs the prior period.
+  cost_spike_pct: 15.0

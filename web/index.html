@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Master of Coin AI</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="minimal-lab-shell" data-theme="light">
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-dashboard" viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h4A1.5 1.5 0 0 1 11 5.5v4A1.5 1.5 0 0 1 9.5 11h-4A1.5 1.5 0 0 1 4 9.5v-4Zm9 0A1.5 1.5 0 0 1 14.5 4h4A1.5 1.5 0 0 1 20 5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4A1.5 1.5 0 0 1 13 9.5v-4ZM4 14.5A1.5 1.5 0 0 1 5.5 13h4a1.5 1.5 0 0 1 1.5 1.5v4A1.5 1.5 0 0 1 9.5 20h-4A1.5 1.5 0 0 1 4 18.5v-4Zm9 0a1.5 1.5 0 0 1 1.5-1.5h4a1.5 1.5 0 0 1 1.5 1.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a1.5 1.5 0 0 1-1.5-1.5v-4Z"/></symbol>
+      <symbol id="icon-chart" viewBox="0 0 24 24"><path d="M4 18.5h16M6.5 15l3.6-4.2 3.2 2.7 4.2-6"/><path d="M6.5 15h0m3.6-4.2h0m3.2 2.7h0m4.2-6h0"/></symbol>
+      <symbol id="icon-spark" viewBox="0 0 24 24"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Zm6 11 1 2.8 2.8 1-2.8 1-1 2.8-1-2.8-2.8-1 2.8-1 1-2.8Z"/></symbol>
+      <symbol id="icon-upload" viewBox="0 0 24 24"><path d="M12 15V4m0 0 4 4m-4-4L8 8"/><path d="M5 14v3.5A2.5 2.5 0 0 0 7.5 20h9a2.5 2.5 0 0 0 2.5-2.5V14"/></symbol>
+      <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20 14.5A7.7 7.7 0 0 1 9.5 4a8.4 8.4 0 1 0 10.5 10.5Z"/></symbol>
+      <symbol id="icon-search" viewBox="0 0 24 24"><path d="m20 20-4.4-4.4"/><circle cx="11" cy="11" r="6"/></symbol>
+      <symbol id="icon-command" viewBox="0 0 24 24"><path d="M9 9H7.5A2.5 2.5 0 1 1 10 6.5V9Zm0 0v6m0 0H7.5A2.5 2.5 0 1 0 10 17.5V15Zm0 0h6m0 0v2.5A2.5 2.5 0 1 0 17.5 15H15Zm0 0V9m0 0h2.5A2.5 2.5 0 1 0 15 6.5V9Zm0 0H9"/></symbol>
+      <symbol id="icon-file" viewBox="0 0 24 24"><path d="M7 3.5h6.5L18 8v12.5H7V3.5Z"/><path d="M13.5 3.5V8H18M9.5 13h5M9.5 16h5"/></symbol>
+      <symbol id="icon-send" viewBox="0 0 24 24"><path d="m4 12 16-8-7 16-2-7-7-1Z"/></symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></symbol>
+      <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    </svg>
+
+    <div class="app-shell">
+      <aside class="workspace-rail" aria-label="Workspace">
+        <div class="window-controls" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="brand-lockup">
+          <span class="brand-mark">M</span>
+          <div>
+            <div class="brand">Master of Coin AI</div>
+            <div class="sub">Every coin accounted for</div>
+          </div>
+        </div>
+
+        <nav class="rail-nav" aria-label="Primary workspace">
+          <a class="active" href="#dashboard-view" data-view="dashboard"><svg><use href="#icon-dashboard"></use></svg><span>Dashboard</span></a>
+          <a href="#trend-lab" data-view="dashboard" data-target="#trend-lab"><svg><use href="#icon-chart"></use></svg><span>Analysis</span></a>
+          <a href="#committee-view" data-view="committee"><svg><use href="#icon-spark"></use></svg><span>Executive Committee</span></a>
+          <a href="#scenario-lab" data-view="dashboard" data-target="#scenario-lab"><svg><use href="#icon-command"></use></svg><span>Scenario Lab</span></a>
+          <a href="#board-pack" data-view="dashboard" data-target="#board-pack"><svg><use href="#icon-file"></use></svg><span>Reports</span></a>
+          <a href="#marketplace-view" data-view="marketplace"><svg><use href="#icon-search"></use></svg><span>Marketplace</span></a>
+          <a href="#settings-view" data-view="settings"><svg><use href="#icon-command"></use></svg><span>Settings</span></a>
+        </nav>
+
+        <div class="team-switcher">
+          <div class="avatar">FT</div>
+          <div>
+            <strong>Finance Team</strong>
+            <span>Executive workspace</span>
+          </div>
+        </div>
+
+        <div class="rail-note">
+          <span>Trust model</span>
+          <strong>Every figure is computed by the deterministic engine. The AI only explains the facts.</strong>
+        </div>
+      </aside>
+
+      <main class="workspace-main">
+        <header class="command-dock">
+          <button id="command-trigger" class="search-trigger" type="button">
+            <svg><use href="#icon-search"></use></svg>
+            <span>Search anything...</span>
+            <kbd>Ctrl K</kbd>
+          </button>
+          <div class="dock-actions">
+            <button id="theme-toggle" class="icon-button theme-toggle" type="button" aria-label="Toggle dark mode">
+              <svg><use href="#icon-moon"></use></svg>
+            </button>
+            <label id="dropzone" class="upload-btn dropzone">
+              <svg><use href="#icon-upload"></use></svg>
+              <input id="file" type="file" accept=".xlsx" hidden />
+              <span>Upload statement</span>
+            </label>
+            <a class="pill" href="/api/template" download title="Download a blank Excel input template">Excel template</a>
+            <span id="status-pill" class="pill">No statement loaded</span>
+          </div>
+        </header>
+
+        <section id="dashboard-view" class="product-view active" data-product-view="dashboard">
+        <section class="welcome-band">
+          <div>
+            <h1 id="greeting">Welcome</h1>
+            <p>AI-led financial advisory for board-ready decisions, grounded in deterministic numbers.</p>
+          </div>
+          <div class="workspace-date">31 May 2024</div>
+        </section>
+
+        <section id="executive-brief" class="executive-brief">
+          <div class="brief-copy">
+            <div class="section-kicker"><svg><use href="#icon-spark"></use></svg>AI Executive Brief</div>
+            <p><strong>Net profit declined <span class="danger">7.2%</span></strong> compared to last year.</p>
+            <p>Gross margin decreased because resin prices increased <span class="success">14%</span>, while inventory increased faster than revenue.</p>
+            <p class="attention-line">3 risks require attention before the next board review.</p>
+          </div>
+          <div class="brief-actions">
+            <button class="brief-action" type="button" data-command="Explain margin movement">
+              <span><svg><use href="#icon-spark"></use></svg></span>
+              <strong>Explain</strong>
+              <small>Why did this happen?</small>
+            </button>
+            <button class="brief-action" type="button" data-command="Run resin cost scenario">
+              <span><svg><use href="#icon-chart"></use></svg></span>
+              <strong>Run Scenario</strong>
+              <small>Reduce resin cost by 5%</small>
+            </button>
+            <button class="brief-action" type="button" data-export="pdf">
+              <span><svg><use href="#icon-file"></use></svg></span>
+              <strong>Generate Board Pack</strong>
+              <small>Board-ready memo</small>
+            </button>
+          </div>
+        </section>
+
+        <section id="scorecard" class="metric-ribbon">
+          <div class="metric-card featured">
+            <span>Revenue</span>
+            <strong data-count="842.4">842.4M</strong>
+            <small class="success">up 14.3% vs LY</small>
+          </div>
+          <div class="metric-card">
+            <span>Gross Margin</span>
+            <strong data-count="21.6">21.6%</strong>
+            <small class="danger">down 4.2pp vs LY</small>
+          </div>
+          <div class="metric-card">
+            <span>Net Profit</span>
+            <strong data-count="98.7">98.7M</strong>
+            <small class="danger">down 7.2% vs LY</small>
+          </div>
+          <div class="metric-card">
+            <span>ROA</span>
+            <strong data-count="8.7">8.7%</strong>
+            <small class="danger">down 1.6pp vs LY</small>
+          </div>
+          <div class="metric-card">
+            <span>Current Ratio</span>
+            <strong data-count="1.45">1.45x</strong>
+            <small class="success">up 0.12x vs LY</small>
+          </div>
+          <div class="scorecard-drawer">
+            <div class="section-heading compact">
+              <p class="eyebrow">Current period <small id="period-label"></small></p>
+              <h2>KPI Scorecard</h2>
+            </div>
+            <div id="scorecard-grid" class="scorecard-grid"></div>
+          </div>
+        </section>
+
+        <section class="analysis-layout">
+          <div id="trend-lab" class="trend-stage">
+            <div class="stage-header">
+              <div>
+                <p class="eyebrow">Performance Trend</p>
+                <h2>Revenue and margin trajectory</h2>
+              </div>
+              <div class="segmented-control" aria-label="Chart range"><button class="active" type="button" data-chart-range="5Y">5Y</button><button type="button" data-chart-range="10Y">10Y</button></div>
+            </div>
+            <canvas id="margin-chart" width="720" height="360"></canvas>
+          </div>
+
+          <aside class="insight-stack">
+            <section class="insight-panel">
+              <div class="section-heading compact">
+                <p class="eyebrow">Financial Insights</p>
+                <h2>Board attention</h2>
+              </div>
+              <div class="insight-list">
+                <article><span class="signal success">↑</span><div><strong>Revenue grew 14.3%</strong><p>Higher volume and pricing discipline offset softer conversion.</p></div></article>
+                <article><span class="signal danger">↓</span><div><strong>Gross margin fell 4.2pp</strong><p>Raw material escalation is outpacing sales growth.</p></div></article>
+                <article><span class="signal warning">!</span><div><strong>Inventory increased 18.2%</strong><p>Working capital is building ahead of revenue.</p></div></article>
+              </div>
+            </section>
+
+            <section class="mini-chart-panel">
+              <div class="section-heading compact">
+                <p class="eyebrow">Revenue</p>
+                <h2>Revenue movement</h2>
+              </div>
+              <canvas id="revenue-chart" width="360" height="210"></canvas>
+            </section>
+          </aside>
+        </section>
+
+        <section class="workbench-layout">
+          <div id="scenario-lab" class="scenario-lab surface-pane">
+            <div class="section-heading compact">
+              <p class="eyebrow">Sensitivity Analysis</p>
+              <h2>Scenario Lab</h2>
+            </div>
+            <div class="sliders">
+              <label>Revenue %<input type="range" id="s-revenue" min="-30" max="30" value="0" /><output id="o-revenue">0</output></label>
+              <label>COGS %<input type="range" id="s-cogs" min="-30" max="30" value="0" /><output id="o-cogs">0</output></label>
+              <label>Price / MT %<input type="range" id="s-price" min="-30" max="30" value="0" /><output id="o-price">0</output></label>
+              <label>Opex %<input type="range" id="s-opex" min="-30" max="30" value="0" /><output id="o-opex">0</output></label>
+              <label>Finance Cost %<input type="range" id="s-finance" min="-30" max="30" value="0" /><output id="o-finance">0</output></label>
+            </div>
+            <div class="scenario-actions">
+              <button id="run-scenario" class="btn primary">Run scenario</button>
+              <button id="reset-scenario" class="btn quiet" type="button">Reset</button>
+            </div>
+            <div id="scenario-result" class="muted">Ready to model margin, cost, price, and finance-cost changes.</div>
+          </div>
+
+          <div id="committee-preview" class="committee-preview surface-pane">
+            <div class="section-heading compact">
+              <p class="eyebrow">Decision OS</p>
+              <h2>Executive Committee</h2>
+            </div>
+            <div class="committee-avatars" aria-label="Active advisors">
+              <span data-role="CFO">CF</span>
+              <span data-role="Operations">OP</span>
+              <span data-role="Procurement">PR</span>
+              <span data-role="Risk">RK</span>
+              <span data-role="Strategy">ST</span>
+              <button id="quick-add-advisor" class="avatar-add" type="button" aria-label="Add advisor">+</button>
+            </div>
+            <div class="committee-status-grid">
+              <div><span>Committee Status</span><strong id="committee-active-count" data-committee-count>6 Advisors Active</strong></div>
+              <div><span>Consensus Confidence</span><strong>91%</strong></div>
+              <div><span>Last Discussion</span><strong>2 minutes ago</strong></div>
+            </div>
+            <button class="btn primary" type="button" data-view="committee">Open Committee</button>
+            <div id="narrative" class="committee-narrative" hidden></div>
+          </div>
+
+          <div class="chat-panel surface-pane">
+            <div class="section-heading compact">
+              <p class="eyebrow">Conversation</p>
+              <h2>Ask the Committee</h2>
+            </div>
+            <div id="chat-log" class="chat-log"></div>
+            <form id="chat-form" class="chat-form">
+              <input id="chat-input" type="text" placeholder="Ask a financial question..." autocomplete="off" />
+              <button class="icon-button send-button" type="submit" aria-label="Send"><svg><use href="#icon-send"></use></svg></button>
+            </form>
+          </div>
+        </section>
+
+        <section id="board-pack" class="board-pack surface-pane">
+          <div>
+            <p class="eyebrow">Board Export</p>
+            <h2>Report pack</h2>
+          </div>
+          <div class="exports">
+            <button class="export-button" data-export="excel"><svg><use href="#icon-file"></use></svg><span>Excel</span></button>
+            <button class="export-button" data-export="pdf"><svg><use href="#icon-file"></use></svg><span>PDF</span></button>
+            <button class="export-button" data-export="word"><svg><use href="#icon-file"></use></svg><span>Word</span></button>
+            <button class="export-button" data-export="dashboard"><svg><use href="#icon-dashboard"></use></svg><span>Dashboard JSON</span></button>
+          </div>
+          <footer class="foot" id="foot">Figures computed deterministically by the engine; narrative is advisory.</footer>
+        </section>
+        </section>
+
+        <section id="committee-view" class="product-view" data-product-view="committee" hidden>
+          <section class="committee-hero surface-pane">
+            <div>
+              <p class="eyebrow">Decision intelligence</p>
+              <h1>Executive Committee</h1>
+              <p class="hero-copy">A boardroom of specialized AI executives reviewing the same deterministic financial facts from different operating angles.</p>
+            </div>
+            <div class="committee-hero-actions">
+              <div class="hero-stat"><span>Active Advisors</span><strong data-committee-count-compact>6</strong></div>
+              <div class="hero-stat"><span>Consensus Confidence</span><strong>92%</strong></div>
+              <div class="hero-stat"><span>Avg. Response Time</span><strong>11s</strong></div>
+              <button id="run-committee" class="btn primary" type="button">Run Committee Analysis</button>
+              <button id="edit-committee" class="btn quiet" type="button">Edit Committee</button>
+              <button class="btn quiet" type="button" data-open-advisor-modal>Add Advisor</button>
+            </div>
+          </section>
+
+          <section class="committee-switcher surface-pane" aria-label="Saved committees">
+            <button class="active" type="button" data-committee-preset="Executive Board">Executive Board</button>
+            <button type="button" data-committee-preset="Finance Committee">Finance Committee</button>
+            <button type="button" data-committee-preset="Operations Committee">Operations Committee</button>
+            <button type="button" data-committee-preset="Investment Committee">Investment Committee</button>
+            <button type="button" data-committee-preset="Risk Committee">Risk Committee</button>
+          </section>
+
+          <section class="advisor-grid" aria-label="Executive advisor grid">
+            <article class="advisor-card chair" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove CFO"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar">CF</span><span class="status-dot online"></span></div>
+              <h2>CFO</h2>
+              <p>Financial Strategy</p>
+              <div class="advisor-description">Chairs the committee and translates margin, liquidity, debt, and allocation tradeoffs into board decisions.</div>
+              <div class="knowledge-tags"><span>Treasury</span><span>Capital Allocation</span><span>Liquidity</span><span>Cash Flow</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>94%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove Financial Controller"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar controller">FC</span><span class="status-dot online"></span></div>
+              <h2>Financial Controller</h2>
+              <p>Reporting Discipline</p>
+              <div class="advisor-description">Validates period close quality, reconciliations, variance explanations, and management reporting consistency.</div>
+              <div class="knowledge-tags"><span>Close</span><span>Variance</span><span>Controls</span><span>Reporting</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>90%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove Operations Director"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar operations">OP</span><span class="status-dot online"></span></div>
+              <h2>Operations Director</h2>
+              <p>Manufacturing Performance</p>
+              <div class="advisor-description">Challenges financial conclusions with yield, downtime, conversion cost, and production reality.</div>
+              <div class="knowledge-tags"><span>Yield</span><span>OEE</span><span>Waste</span><span>Capacity</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>89%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove Procurement Expert"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar procurement">PR</span><span class="status-dot online"></span></div>
+              <h2>Procurement Expert</h2>
+              <p>Input Cost Intelligence</p>
+              <div class="advisor-description">Interprets resin, supplier concentration, price escalation, and contract exposure.</div>
+              <div class="knowledge-tags"><span>Resin</span><span>Suppliers</span><span>Contracts</span><span>FX</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>91%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove Risk Officer"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar risk">RK</span><span class="status-dot online"></span></div>
+              <h2>Risk Officer</h2>
+              <p>Governance and Exposure</p>
+              <div class="advisor-description">Scores downside risk across liquidity, customer concentration, working capital, and covenant pressure.</div>
+              <div class="knowledge-tags"><span>Controls</span><span>Credit</span><span>Liquidity</span><span>Audit</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>92%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card" draggable="true">
+              <button class="advisor-remove-icon" type="button" data-remove-advisor aria-label="Remove Strategy Director"><svg><use href="#icon-x"></use></svg></button>
+              <div class="advisor-topline"><span class="advisor-avatar strategy">ST</span><span class="status-dot online"></span></div>
+              <h2>Strategy Director</h2>
+              <p>Growth and Portfolio</p>
+              <div class="advisor-description">Balances revenue momentum, pricing power, investment timing, and board appetite.</div>
+              <div class="knowledge-tags"><span>Pricing</span><span>Market</span><span>Expansion</span><span>Board</span></div>
+              <div class="advisor-meta"><span>Confidence</span><strong>88%</strong></div>
+              <div class="advisor-actions"><button type="button" data-configure-advisor>Configure</button><button type="button" data-duplicate-advisor>Duplicate</button></div>
+            </article>
+            <article class="advisor-card add-card" data-open-advisor-modal>
+              <span class="add-orb">+</span>
+              <h2>Create custom advisor</h2>
+              <p>Add an executive role with its own objectives, knowledge base, model, permissions, and reasoning style.</p>
+            </article>
+          </section>
+
+          <section class="committee-intelligence-layout">
+            <div class="boardroom-discussion surface-pane">
+              <div class="section-heading compact">
+                <p class="eyebrow">Committee Discussion</p>
+                <h2>Boardroom reasoning timeline</h2>
+              </div>
+              <div id="discussion-timeline" class="discussion-timeline">
+                <article><span>CF</span><div><strong>CFO</strong><p>Margin deterioration is primarily caused by increased resin costs.</p></div></article>
+                <article><span>OP</span><div><strong>Operations</strong><p>Disagree. Yield losses contributed almost equally and require immediate plant-level action.</p></div></article>
+                <article><span>PR</span><div><strong>Procurement</strong><p>Supplier concentration increased pricing pressure. A dual-source program should begin this quarter.</p></div></article>
+                <article><span>RK</span><div><strong>Risk</strong><p>Cash reserves remain healthy. Expansion remains feasible if working capital is protected.</p></div></article>
+                <article><span>ST</span><div><strong>Strategy</strong><p>Revenue momentum supports selective investment, but expansion should move one quarter later.</p></div></article>
+              </div>
+            </div>
+
+            <aside class="consensus-panel surface-pane">
+              <div class="section-heading compact">
+                <p class="eyebrow">Visual Consensus</p>
+                <h2>Committee Consensus</h2>
+              </div>
+              <div class="consensus-meter" style="--consensus: 92"><span>92%</span><small>Agreement</small></div>
+              <div class="consensus-breakdown">
+                <div><span>Confidence</span><strong>High</strong></div>
+                <div><span>Minority opinions</span><strong>1</strong></div>
+                <div><span>Voting breakdown</span><strong>5 / 1</strong></div>
+              </div>
+              <div class="final-recommendation">
+                <span>Final Recommendation</span>
+                <ul>
+                  <li>Reduce procurement cost through supplier diversification.</li>
+                  <li>Improve manufacturing yield before scaling output.</li>
+                  <li>Delay expansion by one quarter.</li>
+                </ul>
+              </div>
+            </aside>
+          </section>
+        </section>
+
+        <section id="marketplace-view" class="product-view" data-product-view="marketplace" hidden>
+          <section class="marketplace-hero surface-pane">
+            <div>
+              <p class="eyebrow">Advisor Marketplace</p>
+              <h1>Install specialist executives</h1>
+              <p class="hero-copy">Add expert advisors for procurement, audit, tax, manufacturing, ESG, treasury, banking, pricing, and supply chain decisions.</p>
+            </div>
+            <button class="btn primary" type="button" data-open-advisor-modal>Create Custom Advisor</button>
+          </section>
+
+          <section id="advisor-marketplace" class="marketplace-grid">
+            <article class="marketplace-card" data-advisor="Procurement Expert"><div><strong>Procurement Expert</strong><span>4.9 rating</span></div><p>Supplier negotiation, resin exposure, contracts, FX, and commodity pricing.</p><div class="knowledge-tags"><span>Resin</span><span>Contracts</span><span>FX</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Manufacturing Expert"><div><strong>Manufacturing Expert</strong><span>4.8 rating</span></div><p>Yield, OEE, scrap, downtime, capacity planning, and plant efficiency.</p><div class="knowledge-tags"><span>Yield</span><span>OEE</span><span>Scrap</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Treasury Manager"><div><strong>Treasury Manager</strong><span>4.8 rating</span></div><p>Liquidity, debt, working capital, banks, and cash conversion risk.</p><div class="knowledge-tags"><span>Debt</span><span>Cash</span><span>Banks</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Tax Advisor"><div><strong>Tax Advisor</strong><span>4.7 rating</span></div><p>Tax exposure, compliance, incentives, and deferred tax implications.</p><div class="knowledge-tags"><span>VAT</span><span>Compliance</span><span>Tax</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Big Four Auditor"><div><strong>Big Four Auditor</strong><span>4.9 rating</span></div><p>Audit readiness, controls, disclosures, evidence, and board assurance.</p><div class="knowledge-tags"><span>Controls</span><span>Audit</span><span>Evidence</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Lean Six Sigma"><div><strong>Lean Six Sigma</strong><span>4.6 rating</span></div><p>Waste reduction, process capability, root cause analysis, and savings plans.</p><div class="knowledge-tags"><span>DMAIC</span><span>Waste</span><span>Process</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="Pricing Specialist"><div><strong>Pricing Specialist</strong><span>4.7 rating</span></div><p>Price realization, customer margin, elasticity, and contract pass-through.</p><div class="knowledge-tags"><span>Price</span><span>Margin</span><span>Mix</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="IFRS Specialist"><div><strong>IFRS Specialist</strong><span>4.8 rating</span></div><p>IFRS classification, disclosure quality, accounting policy, and reporting risk.</p><div class="knowledge-tags"><span>IFRS</span><span>Policy</span><span>Disclosure</span></div><button type="button" data-install-advisor>Install</button></article>
+            <article class="marketplace-card" data-advisor="ESG Advisor"><div><strong>ESG Advisor</strong><span>4.5 rating</span></div><p>Energy, compliance, sustainability reporting, and stakeholder exposure.</p><div class="knowledge-tags"><span>Energy</span><span>ESG</span><span>Compliance</span></div><button type="button" data-install-advisor>Install</button></article>
+          </section>
+        </section>
+
+        <section id="settings-view" class="product-view" data-product-view="settings" hidden>
+          <section class="settings-hero surface-pane">
+            <div>
+              <p class="eyebrow">Settings</p>
+              <h1>Workspace controls</h1>
+              <p class="hero-copy">Manage appearance, committee behavior, exports, and provider settings for the desktop workspace.</p>
+            </div>
+            <button class="btn primary" type="button" id="settings-theme-toggle">Toggle Appearance</button>
+          </section>
+          <section class="settings-grid">
+            <article class="settings-card surface-pane">
+              <h2>Appearance</h2>
+              <p>Switch between light and dark mode. Theme choice is saved locally on this machine.</p>
+              <button class="btn quiet" type="button" data-settings-action="theme">Toggle light / dark</button>
+            </article>
+            <article class="settings-card surface-pane">
+              <h2>Executive Committee</h2>
+              <p>Advisor order controls the committee chair. Drag advisors to reorder; use the cross to remove any advisor.</p>
+              <button class="btn quiet" type="button" data-view="committee">Open committee</button>
+            </article>
+            <article class="settings-card surface-pane">
+              <h2>Exports</h2>
+              <p>Excel, PDF, Word, board pack, and dashboard JSON exports require an uploaded statement.</p>
+              <button class="btn quiet" type="button" data-target="#board-pack" data-view="dashboard">Open reports</button>
+            </article>
+            <article class="settings-card surface-pane">
+              <h2>Keyboard</h2>
+              <p>Use Ctrl K for the command palette and Escape to close overlays.</p>
+              <button class="btn quiet" type="button" id="settings-command-palette">Open command palette</button>
+            </article>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <div id="command-palette" class="command-palette" aria-hidden="true">
+      <div class="palette-panel">
+        <div class="palette-search"><svg><use href="#icon-search"></use></svg><input id="palette-input" type="text" placeholder="Search, run scenario, export board pack..." /></div>
+        <div class="palette-list">
+          <button type="button" data-command="Explain gross margin movement"><span>Explain gross margin movement</span><kbd>Enter</kbd></button>
+          <button type="button" data-view="committee"><span>Open Executive Committee</span><kbd>E</kbd></button>
+          <button type="button" data-command="Run resin cost scenario"><span>Run resin cost scenario</span><kbd>R</kbd></button>
+          <button type="button" data-export="pdf"><span>Generate board pack</span><kbd>B</kbd></button>
+          <button type="button" data-open-advisor-modal><span>Add committee advisor</span><kbd>A</kbd></button>
+          <button type="button" data-command="Toggle theme"><span>Toggle light / dark mode</span><kbd>T</kbd></button>
+        </div>
+        <button id="palette-close" class="palette-close" type="button" aria-label="Close command palette"><svg><use href="#icon-x"></use></svg></button>
+      </div>
+    </div>
+
+    <div id="advisor-modal" class="advisor-modal" aria-hidden="true">
+      <form class="advisor-modal-panel">
+        <div class="modal-heading">
+          <div>
+            <p class="eyebrow">Add Advisor</p>
+            <h2>Design a committee executive</h2>
+          </div>
+          <button id="advisor-modal-close" class="icon-button" type="button" aria-label="Close add advisor modal"><svg><use href="#icon-x"></use></svg></button>
+        </div>
+        <div class="advisor-mode-switch" role="tablist" aria-label="Advisor creation mode">
+          <button class="active" type="button" data-advisor-mode="built-in">Built-in Advisor</button>
+          <button type="button" data-advisor-mode="custom">Create Custom Advisor</button>
+        </div>
+        <div class="advisor-form-grid">
+          <label>Name<input type="text" value="IFRS Specialist" /></label>
+          <label>Role<input type="text" value="Accounting Policy" /></label>
+          <label>Department<input type="text" value="Finance" /></label>
+          <label>Model<select><option>Gemini 1.5 Pro</option><option>OpenAI GPT-4.1</option><option>Claude Sonnet</option><option>Ollama Local</option></select></label>
+          <label>Reasoning Style<select><option>Board concise</option><option>Socratic challenge</option><option>Audit evidence first</option><option>Scenario driven</option></select></label>
+          <label>Temperature<input type="range" min="0" max="100" value="22" /></label>
+          <label>Color Accent<input type="color" value="#6D5EF7" /></label>
+          <label>Avatar<input type="text" value="IF" /></label>
+          <label class="wide">System Prompt<textarea>Act as an IFRS specialist reviewing the company's financial statements. Challenge classification, disclosure, and accounting-policy risk. Never invent figures.</textarea></label>
+          <label class="wide">Knowledge<textarea>IFRS standards, disclosure notes, audit findings, accounting policy memos, board papers.</textarea></label>
+          <label class="wide">Objectives<textarea>Protect reporting quality, identify accounting risk, explain board-level implications, and flag missing evidence.</textarea></label>
+          <label class="wide">Permissions<select><option>Read facts and generate recommendations</option><option>Read facts, run scenarios, draft reports</option><option>Read-only observer</option></select></label>
+        </div>
+        <div class="modal-actions">
+          <button class="btn quiet" type="button" id="advisor-modal-cancel">Cancel</button>
+          <button class="btn primary" type="submit">Save Advisor</button>
+        </div>
+      </form>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>

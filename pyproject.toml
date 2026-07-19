@@ -1,0 +1,109 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "master-of-coin"
+version = "0.1.0"
+description = "Master of Coin AI — an AI financial advisor for any company: deterministic finance engine with an LLM advisory layer"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Sumit Anthony" }]
+dependencies = [
+    "pydantic>=2.6",
+    "pydantic-settings>=2.2",
+    "PyYAML>=6.0",
+    "openpyxl>=3.1",
+    "python-docx>=1.1",
+    "reportlab>=4.1",
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "python-multipart>=0.0.9",
+    "httpx>=0.27",
+    "pywebview>=5.1",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.1",
+    "pytest-cov>=5.0",
+    "pytest-mock>=3.14",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "types-PyYAML>=6.0",
+    "coverage>=7.5",
+]
+package = [
+    "pyinstaller>=6.6",
+]
+
+[project.scripts]
+master-of-coin = "advisor.app:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/advisor"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+    "C4",  # comprehensions
+    "SIM", # simplify
+    "PTH", # use pathlib
+    "RUF",
+]
+ignore = ["B008"]  # FastAPI uses function calls in argument defaults (Depends/File)
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+files = ["src", "tests"]
+mypy_path = "src"
+
+[[tool.mypy.overrides]]
+module = [
+    "webview",
+    "webview.*",
+    "reportlab.*",
+    "docx",
+    "docx.*",
+    "openpyxl.*",
+]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+addopts = "-ra -q --strict-markers --cov=advisor --cov-report=term-missing --cov-fail-under=90"
+markers = [
+    "e2e: end-to-end smoke tests that launch the app (may be slow)",
+]
+filterwarnings = ["error::DeprecationWarning:advisor.*"]
+
+[tool.coverage.run]
+branch = true
+source = ["advisor"]
+omit = ["*/advisor/app.py"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]
