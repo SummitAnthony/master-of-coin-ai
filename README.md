@@ -2,6 +2,12 @@
 
 > *The engine counts the coins. The AI tells the story.*
 
+[![CI](https://github.com/SummitAnthony/master-of-coin-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/SummitAnthony/master-of-coin-ai/actions/workflows/ci.yml)
+![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue)
+![Engine coverage 100%](https://img.shields.io/badge/engine%20coverage-100%25-brightgreen)
+![mypy strict](https://img.shields.io/badge/mypy-strict-blue)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+
 **Master of Coin AI** is a standalone Windows desktop AI financial advisor for **any
 company**. Point it at your income statement (.xlsx) and it computes the
 financials **deterministically**, has an LLM write the executive advisory layer
@@ -13,6 +19,17 @@ and an interactive dashboard — plus conversational and what-if modes.
 
 Company name, currency, volume unit, and fiscal year end are all configurable —
 nothing about your company is baked into the code.
+
+![Master of Coin AI dashboard](docs/media/dashboard-dark.png)
+
+<details>
+<summary><b>More screenshots</b> — light mode & the AI Executive Committee</summary>
+
+![Dashboard, light mode](docs/media/dashboard-light.png)
+
+![Executive Committee — a boardroom of AI personas reviewing the same deterministic facts](docs/media/committee-dark.png)
+
+</details>
 
 ## Getting your data in
 
